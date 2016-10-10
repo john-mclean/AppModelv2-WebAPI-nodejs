@@ -30,7 +30,7 @@ var bunyan = require('bunyan');
 var restify = require('restify');
 var config = require('./config');
 var passport = require('passport');
-var OIDCBearerStrategy = require('passport-azure-ad').BearerStrategy;
+var OIDCBearerStrategy = require('../../../passport-azure-ad/lib/index').BearerStrategy;
 
 
 // We pass these options in to the ODICBearerStrategy.
@@ -60,8 +60,8 @@ var log = bunyan.createLogger({
 
 // MongoDB setup
 // Setup some configuration
-var serverPort = process.env.PORT || 3000;
-var serverURI = (process.env.PORT) ? config.mongoose_auth_mongohq : config.mongoose_auth_local;
+var serverPort = 4000;
+var serverURI = config.mongoose_auth_local;
 
 // Connect to MongoDB
 global.db = mongoose.connect(serverURI);
